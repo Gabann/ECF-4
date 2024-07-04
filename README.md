@@ -144,6 +144,9 @@ Run the application with your Spring Boot configuration.
 [//]: # (    - [ ] Nested Feature)
 
 - [ ] Full test code coverage
+- [ ] Form validation
+- [ ] Secured routes with login for recruiter, candidate and admin
+- [ ] Page styling and design
 
 <div align="right"><a href="#readme-top">back to top</a></div>
 

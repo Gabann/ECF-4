@@ -20,8 +20,15 @@ public class JobOfferController
 	@GetMapping("/all")
 	String getAll(Model model)
 	{
-		model.addAttribute("jobOffers", jobOfferService.getActive());
+		model.addAttribute("jobOffers", jobOfferService.getAll());
 		return "jobOfferList";
+	}
+
+	@GetMapping("{id}")
+	String getById(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("jobOffer", jobOfferService.getById(id));
+		return "jobOfferDetails";
 	}
 
 	@GetMapping("/add")

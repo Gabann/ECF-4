@@ -28,8 +28,15 @@ public class JobInterviewController
 	@GetMapping("/all")
 	String getAll(Model model)
 	{
-		model.addAttribute("jobInterviews", jobInterviewService.getNorAcceptedNorUnaccepted());
+		model.addAttribute("jobInterviews", jobInterviewService.getAll());
 		return "jobInterviewList";
+	}
+
+	@GetMapping("{id}")
+	String getById(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("jobInterview", jobInterviewService.getById(id));
+		return "jobInterviewDetails";
 	}
 
 	@GetMapping("/add")

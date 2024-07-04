@@ -38,4 +38,9 @@ public class JobOfferService
 	{
 		repository.deleteById(id);
 	}
+
+	public JobOffer getById(Long id)
+	{
+		return repository.findById(id).orElse(null);
+	}
 }

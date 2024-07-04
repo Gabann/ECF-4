@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job interview details</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Job interview details</h2>
+	<table>
+		<tr>
+			<td>Id:</td>
+			<td th:text="${jobInterview.getId()}"></td>
+		</tr>
+		<tr>
+			<td>Job offer:</td>
+			<td th:text="${jobInterview.getJobOffer()}"></td>
+		</tr>
+		<tr>
+			<td>Candidate:</td>
+			<td th:text="${jobInterview.getCandidate()}"></td>
+		</tr>
+		<tr>
+			<td>Interview date:</td>
+			<td th:text="${jobInterview.getInterviewDate()}"></td>
+		</tr>
+		<tr>
+			<td>Interview address:</td>
+			<td th:text="${jobInterview.getInterviewAddress()}"></td>
+		</tr>
+		<tr>
+			<td>Accepted status:</td>
+			<td th:text="${jobInterview.getAccepted()}"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

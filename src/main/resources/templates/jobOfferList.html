@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Job offer list</title>
 	<div th:replace="~{fragments :: bootstrapImport}"></div>
+	<link href="/css/jobOffer.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
@@ -16,24 +17,26 @@
 					<th>Name</th>
 					<th>Company</th>
 					<th>Position</th>
+					<th>Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="jobOffer : ${jobOffers}">
+				<tr th:classappend="${!jobOffer.active} ? 'inactive-offer table-secondary' : ''" th:each="jobOffer : ${jobOffers}">
 					<td th:text="${jobOffer.getId()}"></td>
 					<td>
-						<a th:href="@{/jobOffer/{id}(id=${jobOffer.getId()})}">
-							<span th:text="${jobOffer.getName()}"></span>
-						</a>
+						<a th:href="@{/jobOffer/{id}(id=${jobOffer.getId()})}" th:text="${jobOffer.getName()}"></a>
 					</td>
 					<td th:text="${jobOffer.getCompany()}"></td>
 					<td th:text="${jobOffer.getPosition()}"></td>
+					<td th:text="${jobOffer.active} ? 'Active' : 'Inactive'"></td>
 					<td>
-						<a class="btn btn-primary" th:href="@{/jobOffer/edit/{id}(id=${jobOffer.getId()})}">Edit</a>
+						<a class="btn btn-primary" th:classappend="${!jobOffer.active} ? 'disabled' : ''"
+						   th:href="@{/jobOffer/edit/{id}(id=${jobOffer.getId()})}">Edit</a>
 						<form method="post" th:action="@{'/jobOffer/delete/' + ${jobOffer.getId()}}">
 							<button class="btn btn-danger" type="submit">Delete</button>
 						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>

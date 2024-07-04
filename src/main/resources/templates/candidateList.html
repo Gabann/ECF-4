@@ -22,7 +22,9 @@
 		</thead>
 		<tbody>
 			<tr th:each="candidate : ${candidates}">
-				<td th:text="${candidate.id}"></td>
+				<td>
+					<a th:href="@{/candidate/{id}(id=${candidate.id})}" th:text="${candidate.id}"></a>
+				</td>
 				<td th:text="${candidate.firstName}"></td>
 				<td th:text="${candidate.lastName}"></td>
 				<td th:text="${candidate.email}"></td>

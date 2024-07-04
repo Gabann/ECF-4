@@ -16,26 +16,38 @@
 				<th>Candidate</th>
 				<th>Interview date</th>
 				<th>Interview address</th>
+				<th>Accepted status</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="jobInterview : ${jobInterviews}">
-				<td th:text="${jobInterview.id}"></td>
+			<tr th:classappend="${jobInterview.accepted != null} ? 'table-secondary' : ''" th:each="jobInterview : ${jobInterviews}">
+				<td>
+					<a th:href="@{/jobInterview/{id}(id=${jobInterview.id})}" th:text="${jobInterview.id}"></a>
+				</td>
 				<td th:text="${jobInterview.jobOffer}"></td>
 				<td th:text="${jobInterview.candidate}"></td>
 				<td th:text="${jobInterview.interviewDate}"></td>
 				<td th:text="${jobInterview.interviewAddress}"></td>
+				<td th:text="${jobInterview.accepted}"></td>
 				<td>
-					<a class="btn btn-primary" th:href="@{'/jobInterview/edit/' + ${jobInterview.id}}">Edit</a>
+					<a class="btn btn-primary" th:classappend="${jobInterview.accepted != null} ? 'disabled' : ''"
+					   th:disabled="${jobInterview.accepted != null}"
+					   th:href="@{'/jobInterview/edit/' + ${jobInterview.id}}">Edit</a>
 					<form method="post" th:action="@{'/jobInterview/accept/' + ${jobInterview.id}}">
-						<button class="btn btn-success" type="submit">Accept the candidate</button>
+						<button class="btn btn-success" th:classappend="${jobInterview.accepted != null} ? 'disabled' : ''"
+						        th:disabled="${jobInterview.accepted != null}"
+						        type="submit">Accept the candidate
+						</button>
 					</form>
 					<form method="post" th:action="@{'/jobInterview/reject/' + ${jobInterview.id}}">
-						<button class="btn btn-warning" type="submit">Reject the candidate</button>
+						<button class="btn btn-warning" th:classappend="${jobInterview.accepted != null} ? 'disabled' : ''"
+						        th:disabled="${jobInterview.accepted != null}"
+						        type="submit">Reject the candidate
+						</button>
 					</form>
 					<form method="post" th:action="@{'/jobInterview/delete/' + ${jobInterview.id}}">
-						<button class="btn btn-danger" type="submit">Delete</button>
+						<button class="btn btn-danger" th:disabled="${jobInterview.accepted != null}" type="submit">Delete</button>
 					</form>
 				</td>
 			</tr>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Candidate details</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Candidate details</h2>
+	<table>
+		<tr>
+			<td>Id:</td>
+			<td th:text="${candidate.getId()}"></td>
+		</tr>
+		<tr>
+			<td>First name:</td>
+			<td th:text="${candidate.getFirstName()}"></td>
+		</tr>
+		<tr>
+			<td>Last name:</td>
+			<td th:text="${candidate.getLastName()}"></td>
+		</tr>
+		<tr>
+			<td>Email:</td>
+			<td th:text="${candidate.getEmail()}"></td>
+		</tr>
+		<tr>
+			<td>Phone number:</td>
+			<td th:text="${candidate.getPhone()}"></td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td th:text="${candidate.getAddress()}"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

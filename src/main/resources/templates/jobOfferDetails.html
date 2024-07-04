@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job offer details</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Job offer details</h2>
+	<table>
+		<tr>
+			<td>Id:</td>
+			<td th:text="${jobOffer.getId()}"></td>
+		</tr>
+		<tr>
+			<td>Name:</td>
+			<td th:text="${jobOffer.getName()}"></td>
+		</tr>
+		<tr>
+			<td>Company:</td>
+			<td th:text="${jobOffer.getCompany()}"></td>
+		</tr>
+		<tr>
+			<td>Position:</td>
+			<td th:text="${jobOffer.getPosition()}"></td>
+		</tr>
+		<tr>
+			<td>Status:</td>
+			<td th:text="${jobOffer.active} ? 'Active' : 'Inactive'"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

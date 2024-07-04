@@ -14,17 +14,17 @@ public class JobInterview
 {
 	LocalDate interviewDate;
 	String interviewAddress;
-
+	Boolean accepted = null;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
-
-	@ManyToOne(cascade = CascadeType.ALL)
+	//TODO: fix cascade type, when set to all we get "detached entity passed to persist" error but when not set we can't delete user or
+	// job offer without deleting the interview first
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
-
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "job_offer_id")
 	private JobOffer jobOffer;
 }

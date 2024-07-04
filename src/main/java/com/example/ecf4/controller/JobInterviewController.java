@@ -28,7 +28,7 @@ public class JobInterviewController
 	@GetMapping("/all")
 	String getAll(Model model)
 	{
-		model.addAttribute("jobInterviews", jobInterviewService.getAll());
+		model.addAttribute("jobInterviews", jobInterviewService.getNorAcceptedNorUnaccepted());
 		return "jobInterviewList";
 	}
 
@@ -36,7 +36,7 @@ public class JobInterviewController
 	String addJobInterview(Model model)
 	{
 		model.addAttribute("candidates", candidateService.getAll());
-		model.addAttribute("jobOffers", jobOfferService.getAll());
+		model.addAttribute("jobOffers", jobOfferService.getActive());
 		model.addAttribute("jobInterview", new JobInterview());
 		return "addJobInterview";
 	}
@@ -52,6 +52,20 @@ public class JobInterviewController
 	String deleteJobInterview(@PathVariable Long id)
 	{
 		jobInterviewService.delete(id);
+		return "redirect:/jobInterview/all";
+	}
+
+	@PostMapping("/accept/{id}")
+	String confirmJobInterview(@PathVariable Long id)
+	{
+		jobInterviewService.accept(id);
+		return "redirect:/jobInterview/all";
+	}
+
+	@PostMapping("/reject/{id}")
+	String rejectJobInterview(@PathVariable Long id)
+	{
+		jobInterviewService.reject(id);
 		return "redirect:/jobInterview/all";
 	}
 }

@@ -28,6 +28,12 @@
 				<td th:text="${jobInterview.interviewAddress}"></td>
 				<td>
 					<a class="btn btn-primary" th:href="@{'/jobInterview/edit/' + ${jobInterview.id}}">Edit</a>
+					<form method="post" th:action="@{'/jobInterview/accept/' + ${jobInterview.id}}">
+						<button class="btn btn-success" type="submit">Accept the candidate</button>
+					</form>
+					<form method="post" th:action="@{'/jobInterview/reject/' + ${jobInterview.id}}">
+						<button class="btn btn-warning" type="submit">Reject the candidate</button>
+					</form>
 					<form method="post" th:action="@{'/jobInterview/delete/' + ${jobInterview.id}}">
 						<button class="btn btn-danger" type="submit">Delete</button>
 					</form>

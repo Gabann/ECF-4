@@ -20,7 +20,7 @@ public class JobOfferController
 	@GetMapping("/all")
 	String getAll(Model model)
 	{
-		model.addAttribute("jobOffers", jobOfferService.getAll());
+		model.addAttribute("jobOffers", jobOfferService.getActive());
 		return "jobOfferList";
 	}
 

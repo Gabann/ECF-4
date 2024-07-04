@@ -16,6 +16,7 @@ public class JobOffer
 	String description;
 	String company;
 	String position;
+	Boolean active = true;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)

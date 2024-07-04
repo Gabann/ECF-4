@@ -21,6 +21,14 @@ public class JobOfferService
 		return repository.findAll();
 	}
 
+	public List<JobOffer> getActive()
+	{
+		return repository.findAll()
+				.stream()
+				.filter(JobOffer::getActive)
+				.toList();
+	}
+
 	public void save(JobOffer jobOffer)
 	{
 		repository.save(jobOffer);

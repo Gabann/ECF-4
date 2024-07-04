@@ -14,7 +14,7 @@ public class JobOffer
 {
 	String name;
 	String description;
-	String Company;
+	String company;
 	String position;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,11 +15,11 @@ public class Candidate
 	String firstName;
 	String lastName;
 	String email;
+	String password;
 	String phone;
 	String address;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
-	
 }

@@ -14,18 +14,17 @@ public class JobInterview
 {
 	LocalDate interviewDate;
 	String interviewAddress;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@OneToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "job_offer_id")
 	private JobOffer jobOffer;
-
 }

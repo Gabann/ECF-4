@@ -75,4 +75,20 @@ public class JobInterviewController
 		jobInterviewService.reject(id);
 		return "redirect:/jobInterview/all";
 	}
+
+	@GetMapping("/edit/{id}")
+	String editJobInterview(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("candidates", candidateService.getAll());
+		model.addAttribute("jobOffers", jobOfferService.getActive());
+		model.addAttribute("jobInterview", jobInterviewService.getById(id));
+		return "editJobInterview";
+	}
+
+	@PostMapping("/edit")
+	String editJobInterview(@ModelAttribute JobInterview jobInterview)
+	{
+		jobInterviewService.save(jobInterview);
+		return "redirect:/jobInterview/all";
+	}
 }

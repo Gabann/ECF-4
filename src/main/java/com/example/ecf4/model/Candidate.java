@@ -15,7 +15,6 @@ public class Candidate
 	String firstName;
 	String lastName;
 	String email;
-	String password;
 	String phone;
 	String address;
 	@Id

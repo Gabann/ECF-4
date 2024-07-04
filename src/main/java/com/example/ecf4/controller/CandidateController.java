@@ -25,7 +25,7 @@ public class CandidateController
 	}
 
 	@GetMapping("{id}")
-	String getById(@PathVariable Long id, Model model)
+	public String getById(@PathVariable Long id, Model model)
 	{
 		model.addAttribute("candidate", candidateService.getById(id));
 		return "candidateDetails";
@@ -49,6 +49,20 @@ public class CandidateController
 	String deleteCandidate(@PathVariable Long id)
 	{
 		candidateService.delete(id);
+		return "redirect:/candidate/all";
+	}
+
+	@GetMapping("/edit/{id}")
+	String editCandidate(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("candidate", candidateService.getById(id));
+		return "editCandidate";
+	}
+
+	@PostMapping("/edit")
+	String editCandidate(@ModelAttribute Candidate candidate)
+	{
+		candidateService.save(candidate);
 		return "redirect:/candidate/all";
 	}
 }

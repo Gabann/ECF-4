@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit job interview</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Edit job interview</h2>
+
+	<form method="post" th:action="@{/jobInterview/edit}">
+		<div class="form-group">
+
+			<input id="id" name="id" th:value="${jobInterview.id}" type="hidden">
+
+			<label for="interviewDate">Interview date</label>
+			<input class="form-control" id="interviewDate" name="interviewDate" th:value="${jobInterview.interviewDate}" type="date">
+
+			<label for="interviewAddress">Interview address</label>
+			<input class="form-control" id="interviewAddress" name="interviewAddress" th:value="${jobInterview.interviewAddress}"
+			       type="text">
+
+
+			<label for="candidate">Candidate</label>
+			<select class="form-control" id="candidate" name="candidate">
+				<option th:each="candidate : ${candidates}" th:text="${candidate.firstName} + ' ' + ${candidate.lastName}"
+				        th:value="${candidate.id}"></option>
+			</select>
+
+			<label for="jobOffer">Job offer</label>
+			<select class="form-control" id="jobOffer" name="jobOffer">
+				<option th:each="jobOffer : ${jobOffers}" th:text="${jobOffer.name}" th:value="${jobOffer.id}"></option>
+			</select>
+			
+			<label for="accepted">Accepted</label>
+			<input class="form-control" id="accepted" name="accepted" th:value="${jobInterview.accepted}" type="checkbox">
+
+			<button class="btn btn-primary" type="submit">Submit</button>
+
+		</div>
+
+	</form>
+
+</div>
+</body>
+</html>

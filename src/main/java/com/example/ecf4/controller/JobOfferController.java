@@ -51,4 +51,18 @@ public class JobOfferController
 		jobOfferService.delete(id);
 		return "redirect:/jobOffer/all";
 	}
+
+	@GetMapping("/edit/{id}")
+	String editJobOffer(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("jobOffer", jobOfferService.getById(id));
+		return "editJobOffer";
+	}
+
+	@PostMapping("/edit")
+	String editJobOffer(@ModelAttribute JobOffer jobOffer)
+	{
+		jobOfferService.save(jobOffer);
+		return "redirect:/jobOffer/all";
+	}
 }

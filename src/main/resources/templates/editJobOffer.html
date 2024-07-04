@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit job offer</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Edit job offer</h2>
+	<form method="post" th:action="@{/jobOffer/edit}">
+		<div class="form-group">
+			<input id="id" name="id" th:value="${jobOffer.id}" type="hidden">
+			<label for="name">Name</label>
+			<input class="form-control" id="name" name="name" th:value="${jobOffer.name}" type="text">
+			<label for="description">Description</label>
+			<input class="form-control" id="description" name="description" th:value="${jobOffer.description}" type="text">
+			<label for="company">Company</label>
+			<input class="form-control" id="company" name="company" th:value="${jobOffer.company}" type="text">
+			<label for="position">Position</label>
+			<input class="form-control" id="position" name="position" th:value="${jobOffer.position}" type="text">
+			<label for="active">Active</label>
+			<input class="form-control" id="active" name="active" th:value="${jobOffer.active}" type="checkbox">
+			<button class="btn btn-primary" type="submit">Submit</button>
+		</div>
+	</form>
+</div>
+</body>
+</html>

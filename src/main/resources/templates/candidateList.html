@@ -31,7 +31,7 @@
 				<td th:text="${candidate.phone}"></td>
 				<td th:text="${candidate.address}"></td>
 				<td>
-					<a class="btn btn-primary" th:href="@{/candidate/{id}/edit(id=${candidate.id})}">Edit</a>
+					<a class="btn btn-primary" th:href="@{/candidate/edit/{id}(id=${candidate.id})}">Edit</a>
 					<form method="post" th:action="@{'/candidate/delete/' + ${candidate.getId()}}">
 						<button class="btn btn-danger" type="submit">Delete</button>
 					</form>

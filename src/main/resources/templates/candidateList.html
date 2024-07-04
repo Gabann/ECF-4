@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Candidate list</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Email</th>
+				<th>Phone number</th>
+				<th>Address</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="candidate : ${candidates}">
+				<td th:text="${candidate.id}"></td>
+				<td th:text="${candidate.firstName}"></td>
+				<td th:text="${candidate.lastName}"></td>
+				<td th:text="${candidate.email}"></td>
+				<td th:text="${candidate.phone}"></td>
+				<td th:text="${candidate.address}"></td>
+				<td>
+					<a class="btn btn-primary" th:href="@{/candidate/{id}/edit(id=${candidate.id})}">Edit</a>
+					<form method="post" th:action="@{'/candidate/delete/' + ${candidate.getId()}}">
+						<button class="btn btn-danger" type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+	</table>
+	<div>
+		<a href="/candidate/add">Add candidate</a>
+	</div>
+</div>
+</body>
+</html>

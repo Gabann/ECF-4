@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Add job interview</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Add job interview</h2>
+	<form method="post" th:action="@{/jobInterview/add}" th:object="${jobInterview}">
+		<div class="form-group">
+			<label for="interviewDate">Interview Date</label>
+			<input class="form-control" id="interviewDate" th:field="*{interviewDate}" type="date">
+
+			<label for="interviewAddress">Interview Address</label>
+			<input class="form-control" id="interviewAddress" th:field="*{interviewAddress}" type="text">
+		</div>
+		<div class="form-group">
+			<label for="candidate">Candidate</label>
+			<select class="form-control" id="candidate" th:field="*{candidate.id}">
+				<option disabled selected value="">Select a candidate</option>
+				<option th:each="candidate : ${candidates}" th:text="${candidate.firstName} + ' ' + ${candidate.lastName}"
+				        th:value="${candidate.id}"></option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="jobOffer">Job Offer</label>
+			<select class="form-control" id="jobOffer" th:field="*{jobOffer.id}">
+				<option disabled selected value="">Select a job offer</option>
+				<option th:each="jobOffer : ${jobOffers}" th:text="${jobOffer.name}" th:value="${jobOffer.id}"></option>
+			</select>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+</body>
+</html>

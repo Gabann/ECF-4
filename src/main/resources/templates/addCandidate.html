@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Add candidate</h2>
+	<form method="post" th:action="@{/candidate/add}" th:object="${candidate}">
+		<div class="form-group">
+			<label for="firstName">First Name</label>
+			<input class="form-control" id="firstName" th:field="*{firstName}" type="text">
+
+			<label for="lastName">Last name</label>
+			<input class="form-control" id="lastName" th:field="*{lastName}" type="text">
+
+			<label for="email">Email</label>
+			<input class="form-control" id="email" th:field="*{email}" type="email">
+
+			<label for="phone">Phone</label>
+			<input class="form-control" id="phone" th:field="*{phone}" type="text">
+
+			<label for="address">Address</label>
+			<input class="form-control" id="address" th:field="*{address}" type="text">
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+</body>
+</html>

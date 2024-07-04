@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h1>Index</h1>
+	<ul>
+		<li>
+			<a href="/candidate/all">Candidate list</a>
+		</li>
+		<li>
+			<a href="/candidate/add">Add candidate</a>
+		</li>
+		<li>
+			<a href="/jobInterview/all">Job interview list</a>
+		</li>
+		<li>
+			<a href="/jobInterview/add">Add job interview</a>
+		</li>
+		<li>
+			<a href="/jobOffer/all">Job offer list</a>
+		</li>
+		<li>
+			<a href="/jobOffer/add">Add Job offer</a>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

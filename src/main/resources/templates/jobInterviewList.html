@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job interview list</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Job interview list</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Job offer</th>
+				<th>Candidate</th>
+				<th>Interview date</th>
+				<th>Interview address</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="jobInterview : ${jobInterviews}">
+				<td th:text="${jobInterview.id}"></td>
+				<td th:text="${jobInterview.jobOffer}"></td>
+				<td th:text="${jobInterview.candidate}"></td>
+				<td th:text="${jobInterview.interviewDate}"></td>
+				<td th:text="${jobInterview.interviewAddress}"></td>
+				<td>
+					<a class="btn btn-primary" th:href="@{'/jobInterview/edit/' + ${jobInterview.id}}">Edit</a>
+					<form method="post" th:action="@{'/jobInterview/delete/' + ${jobInterview.id}}">
+						<button class="btn btn-danger" type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/jobInterview/add">Add job interview</a>
+</div>
+</body>
+</html>

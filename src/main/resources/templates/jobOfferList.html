@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job offer list</title>
+	<div th:replace="~{fragments :: bootstrapImport}"></div>
+</head>
+<body>
+<div class="container">
+	<h2>Job offer list</h2>
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Company</th>
+					<th>Position</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="jobOffer : ${jobOffers}">
+					<td th:text="${jobOffer.getId()}"></td>
+					<td>
+						<a th:href="@{/jobOffer/{id}(id=${jobOffer.getId()})}">
+							<span th:text="${jobOffer.getName()}"></span>
+						</a>
+					</td>
+					<td th:text="${jobOffer.getCompany()}"></td>
+					<td th:text="${jobOffer.getPosition()}"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{/jobOffer/edit/{id}(id=${jobOffer.getId()})}">Edit</a>
+						<form method="post" th:action="@{'/jobOffer/delete/' + ${jobOffer.getId()}}">
+							<button class="btn btn-danger" type="submit">Delete</button>
+						</form>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<a th:href="@{/jobOffer/add}">Add job offer</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>
